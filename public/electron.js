@@ -16,6 +16,7 @@ const createWindow = () => {
         : path.join(app.getAppPath(), './build/preload.js'), // Loading it from the build folder for production
       worldSafeExecuteJavaScript: true, // If you're using Electron 12+, this should be enabled by default and does not need to be added here.
       contextIsolation: true, // Isolating context so our app is not exposed to random javascript executions making it safer.
+      nodeIntegration: true
     },
   });
 
