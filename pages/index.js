@@ -4,7 +4,7 @@ import Wrapper from "../components/wrapper";
 const Index = () => {
     return  (
         <Wrapper>
-            <p>Dashboard</p>
+            <h1>Dashboard</h1>
         </Wrapper>
     )
 };

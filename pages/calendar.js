@@ -1,12 +1,19 @@
 import React from "react";
 import Wrapper from "../components/wrapper";
+import Calendar from 'react-calendar';
 
-const Calendar = () => {
+
+const PageCalendar = () => {
     return  (
         <Wrapper>
-            <p>Calendar</p>
+            <h1>Calendar</h1>
+            <div className="row calendar-list">
+                <div className="col-12">
+                    <Calendar />
+                </div>
+            </div>
         </Wrapper>
     )
 };
 
-export default Calendar;
+export default PageCalendar;
