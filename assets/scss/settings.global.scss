@@ -60,12 +60,26 @@ html {
   background: $offWhite;
   display: flex;
   flex-flow: column;
+  height: calc(100vh - #{$menuHeight});
   justify-content: space-between;
-  height: 95vh;
-  padding: 15px;
+  padding: 15px 0 15px 15px;
+
+  ul {
+    padding-left: 0;
+
+    li {
+      border-bottom: 1px solid $lightGray;
+      padding: 10px 0;
+
+      a {
+        color: $darkGray;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .content {
+  height: calc(100vh - #{$menuHeight});
   padding: 15px;
-  height: 95vh;
 }
