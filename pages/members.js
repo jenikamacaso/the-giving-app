@@ -1,5 +1,6 @@
 import React from "react";
 import Wrapper from "../components/wrapper";
+import Badge from 'react-bootstrap/Badge';
 
 const Members = () => {
     return (
@@ -29,7 +30,9 @@ const Members = () => {
                             30
                         </div>
                         <div className="col">
-                            Member
+                            <Badge pill bg="success">
+                                Member
+                            </Badge>
                         </div>
                         <div className="col">
                             +
@@ -43,7 +46,25 @@ const Members = () => {
                             20
                         </div>
                         <div className="col">
-                            Visitor
+                            <Badge pill bg="dark">
+                                Visitor
+                            </Badge>
+                        </div>
+                        <div className="col">
+                            +
+                        </div>
+                    </div>
+                    <div className="row members-list__entries">
+                        <div className="col">
+                            Jay Doe
+                        </div>
+                        <div className="col">
+                            10
+                        </div>
+                        <div className="col">
+                            <Badge pill bg="secondary">
+                                Inactive
+                            </Badge>
                         </div>
                         <div className="col">
                             +

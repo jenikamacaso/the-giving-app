@@ -1,7 +1,10 @@
 import React, {useState, useEffect}  from "react";
 import Link from "next/link";
 import HeartLoader from "../components/loaders/loader";
-import {Head} from "next/document";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const Wrapper = (props) => {
     const [loadSplash, setLoadSplash] = useState(true);
@@ -21,17 +24,27 @@ const Wrapper = (props) => {
             </header>
             <div className={!loadSplash ? "d-block" : "d-none"}>
                 <div className="row header">
-                    <div className="col-1 header__logo">The Giving App</div>
-                    <div className="col-11 d-flex justify-content-end header__menu">
-                        <div>
-                            <Link href="#">
-                                <a className="px-3">Logged in as Admin</a>
-                            </Link>
-                            <Link href="#">
-                                <a className="px-3">Logout</a>
-                            </Link>
-                        </div>
-                    </div>
+                    <Navbar variant="dark" bg="dark" expand="lg">
+                        <Container fluid>
+                            <Navbar.Brand href="#home">The Giving App</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="navbar-dark-example" />
+                            <Navbar.Collapse id="navbar-dark-example" className="justify-content-end">
+                                <Nav>
+                                    <NavDropdown
+                                        id="nav-dropdown-dark-example"
+                                        title="Account"
+                                        menuVariant="dark"
+                                    >
+                                        <NavDropdown.Item href="#action/3.1">Account</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.2">Reports</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+                                    </NavDropdown>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
                 </div>
                 <div className="row">
                     <div className="col-1 sidebar">
