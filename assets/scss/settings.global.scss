@@ -1,0 +1,71 @@
+:root {
+  --viewport-height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  text-rendering: optimizeLegibility;
+
+  @include media-breakpoint-down(md) {
+    scroll-snap-type: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: auto;
+  height: 100%; /* Fallback */
+  @include scrollbars(5px, $offWhite, $white);
+
+  &-x {
+    overflow-x: scroll;
+    @include scrollbars(5px, $white, $white);
+  }
+}
+
+.header {
+  &__logo {
+    align-items: center;
+    background: $heartLoader;
+    color: $darkGray;
+    display: flex;
+    text-align: center;
+  }
+  &__menu {
+    background: $heartLoader;
+    padding: 15px;
+    a {
+      color: $darkGray;
+      text-decoration: none;
+    }
+  }
+}
+
+.sidebar {
+  background: $offWhite;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 95vh;
+  padding: 15px;
+}
+
+.content {
+  padding: 15px;
+  height: 95vh;
+}
