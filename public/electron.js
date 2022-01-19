@@ -28,7 +28,7 @@ const createWindow = () => {
   );
 
 	// Setting Window Icon - Asset file needs to be in the public/images folder.
-  mainWindow.setIcon(path.join(__dirname, 'images/appicon.ico'));
+  // mainWindow.setIcon(path.join(__dirname, 'images/appicon.ico'));
 
 	// In development mode, if the window has loaded, then load the dev tools.
   if (isDev) {
@@ -39,26 +39,26 @@ const createWindow = () => {
 };
 
 // ((OPTIONAL)) Setting the location for the userdata folder created by an Electron app. It default to the AppData folder if you don't set it.
-app.setPath(
-  'userData',
-  isDev
-    ? path.join(app.getAppPath(), 'userdata/') // In development it creates the userdata folder where package.json is
-    : path.join(process.resourcesPath, 'userdata/') // In production it creates userdata folder in the resources folder
-);
+// app.setPath(
+//   'userData',
+//   isDev
+//     ? path.join(app.getAppPath(), 'userdata/') // In development it creates the userdata folder where package.json is
+//     : path.join(process.resourcesPath, 'userdata/') // In production it creates userdata folder in the resources folder
+// );
 
 // When the app is ready to load
 app.whenReady().then(async () => {
   await createWindow(); // Create the mainWindow
 
   // If you want to add React Dev Tools
-  if (isDev) {
-    await session.defaultSession
-      .loadExtension(
-        path.join(__dirname, `../userdata/extensions/react-dev-tools`) // This folder should have the chrome extension for React Dev Tools. Get it online or from your Chrome extensions folder.
-      )
-      .then((name) => console.log('Dev Tools Loaded'))
-      .catch((err) => console.log(err));
-  }
+  // if (isDev) {
+  //   await session.defaultSession
+  //     .loadExtension(
+  //       path.join(__dirname, `../userdata/extensions/react-dev-tools`) // This folder should have the chrome extension for React Dev Tools. Get it online or from your Chrome extensions folder.
+  //     )
+  //     .then((name) => console.log('Dev Tools Loaded'))
+  //     .catch((err) => console.log(err));
+  // }
 });
 
 // Exiting the app
