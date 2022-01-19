@@ -1,5 +1,5 @@
 {
-  "name": "tithes-app",
+  "name": "the-giving-app",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
@@ -56,7 +56,7 @@
   },
   "build": {
     "appId": "com.jblcc.tithes",
-    "productName": "Tithes App",
+    "productName": "The Giving App",
     "copyright": "test",
     "files": [
       "build/**/*"
