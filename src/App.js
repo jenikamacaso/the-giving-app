@@ -1,7 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
 
 function App() {
+  const [profileInfo, setProfileInfo] = useState(null);
+
+  function send() {
+    window.api.getProfileInfo({ username: "admin", password: "admin" });
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +23,9 @@ function App() {
         >
           Learn React
         </a>
+        <button type="button" onClick={() => send()}>
+          Send
+        </button>
       </header>
     </div>
   );
