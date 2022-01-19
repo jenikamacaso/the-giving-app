@@ -3,7 +3,8 @@ import "./App.css";
 import React, { useState } from "react";
 
 function App() {
-  const [profileInfo, setProfileInfo] = useState(null);
+
+  // const [profileInfo, setProfileInfo] = useState(null);
 
   function send() {
     window.api.getProfileInfo({ username: "admin", password: "admin" });

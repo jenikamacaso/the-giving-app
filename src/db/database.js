@@ -13,10 +13,3 @@ const db = new sqlite3.Database(
     }
   }
 );
-
-ipcMain.on("asynchronous-message", (event, arg) => {
-  const sql = arg;
-  db.all(sql, (err, rows) => {
-    event.reply("asynchronous-reply", (err && err.message) || rows);
-  });
-});
