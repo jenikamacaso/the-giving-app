@@ -35,10 +35,11 @@ const Wrapper = (props) => {
                                         title="Account"
                                         menuVariant="dark"
                                     >
-                                        <NavDropdown.Item href="#action/3.1">Account</NavDropdown.Item>
+                                        <NavDropdown.Item href="/account">Account</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2">Reports</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                         <NavDropdown.Divider />
+                                        <NavDropdown.Item href="/account/login">Login</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
