@@ -1,0 +1,31 @@
+.members-giving-list {
+  padding: 15px;
+  &__header {
+    background: $darkGray;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+  }
+  &__entries {
+    div.col {
+      border-bottom: 1px solid $lightGray;
+      border-left: 1px solid $lightGray;
+      padding: 10px;
+
+      &:last-of-type {
+        border-right: 1px solid $lightGray;
+      }
+    }
+  }
+  &__action {
+    div.col {
+      border-bottom: 1px solid $lightGray;
+      border-left: 1px solid $lightGray;
+      padding: 10px;
+
+      &:last-of-type {
+        border-right: 1px solid $lightGray;
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+/*Animation Maker*/
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+/*Gradient Maker*/
+@mixin gradient($from, $to, $deg: 90deg, $start: 0%, $end: 100%) {
+  background: $from;
+  background: -moz-linear-gradient($deg, $from $start, $to $end);
+  background: -webkit-linear-gradient($deg, $from $start, $to $end);
+  background: linear-gradient($deg, $from $start, $to $end);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="{$from}", endColorstr="{$to}", GradientType=1);
+}
+
+/*Gradient Maker*/
+@mixin gradient50($from, $to) {
+  background: $from;
+  background: -moz-linear-gradient(90deg, $from 30%, $to 100%);
+  background: -webkit-linear-gradient(90deg, $from 30%, $to 100%);
+  background: linear-gradient(90deg, $from 30%, $to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="{$from}", endColorstr="{$to}", GradientType=1);
+}
+
+/*
+ ** $size: font size
+ ** $lh: line height
+ ** $colour: Font color
+ ** $weight: font-weight
+ ** $font-family: font-family;
+ ** $ls: Letter spacing
+ ** $tt: test-transform
+  ** Usage:  @include font-style(65px, 100%, #ffffff, 700, $Futura-bold, 1px, 'uppercase');
+*/
+
+@mixin font-style($size: false, $lh: false, $colour: false, $weight: false,   $font-family: false,  $ls: false, $tt:false) {
+  @if $size { @include font-size($size); }
+  @if $lh { line-height: $lh; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $font-family { font-family: $font-family, Helvetica, Arial, sans-serif; }
+  @if $ls { letter-spacing: $ls; }
+  @if $tt { text-transform: $tt; }
+}
+
+/*Custom Scrollbars*/
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+/*Fluid Vertical Rhythm*/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-font-sizing($baseline, $min-vw, $max-vw, $min-value, $max-value) {
+  & {
+    $property: "font-size";
+    #{$property}: $min-value;
+
+    @media screen and (min-width: $min-vw) and (max-width: $max-vw) {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    }
+
+    @media screen and (min-width: $max-vw) {
+      #{$property}: $baseline;
+    }
+  }
+}
+
+//Common root size of most browsers; for improvement
+$defaultRootSize: 16;
+
+/*
+ * Pixels to REM Converter
+ * To be put in the root html font-size
+ */
+@function convertPxToPercent($px) {
+  $newRootSize: $px / $defaultRootSize * 100%;
+  @return $newRootSize;
+}
+
+/*
+ * Pixels to REM Converter
+ */
+@function convertPxToRem($px) {
+  $remFormula: $px / $defaultRootSize + .20rem;
+  @return $remFormula;
+}
