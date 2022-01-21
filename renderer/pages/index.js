@@ -2,6 +2,7 @@ import React, {useState}  from "react";
 import Wrapper from "../components/wrapper";
 import { BsFillPeopleFill, BsFillHeartFill } from "react-icons/bs";
 import { SiMicrosoftexcel } from "react-icons/si";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -76,7 +77,7 @@ const Index = () => {
                                         Some quick example text to build on the card title and make up the bulk of
                                         the card's content.
                                     </Card.Text>
-                                    <Card.Link className="btn btn-dark" href="/members">View existing</Card.Link>
+                                    <Card.Link className="btn btn-dark" href="/members">View</Card.Link>
                                     <Card.Link className="btn btn-success" href="/member/add">Add new</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -98,7 +99,7 @@ const Index = () => {
                         </div>
                         <div className="col-3 text-center">
                             <Card className="p-3">
-                                <SiMicrosoftexcel size={70} className="w-100"/>
+                                <FaRegCalendarAlt size={70} className="w-100"/>
                                 <Card.Body>
                                     <Card.Title>Calendar</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
@@ -112,9 +113,9 @@ const Index = () => {
 
                         </div>
                     </div>
-                    <div className="row pt-5 mt-5">
+                    <div className="row mt-3">
                         <h2>Collection</h2>
-                        <XYPlot height={300} width={1400} stroke="green">
+                        <XYPlot height={200} width={1400} stroke="green">
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis />

@@ -13,9 +13,9 @@ let mainWindow;
 // Initializing the Electron Window
 const createWindow = () => {
     mainWindow = new BrowserWindow({
-        width: 1400,
+        width: 1500,
         height: 900,
-        minWidth: 1400,
+        minWidth: 1500,
         minHeight: 900,
         webPreferences: {
             nodeIntegration: false,

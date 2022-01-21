@@ -55,7 +55,7 @@ const Wrapper = (props) => {
                         </Navbar>
                     </div>
                     <div className="row">
-                        <div className="col-1 sidebar">
+                        <div className="col-2 sidebar">
                             <div className="sidebar__menu d-flex flex-column justify-content-between h-100">
                                 <ul>
                                     <li>
@@ -88,7 +88,7 @@ const Wrapper = (props) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-11 content">
+                        <div className="col-10 content">
                             {props.children}
                         </div>
                     </div>
