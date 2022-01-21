@@ -25,6 +25,9 @@ const Members = () => {
                             Gender
                         </div>
                         <div className="col">
+                            Age
+                        </div>
+                        <div className="col">
                             Status
                         </div>
                         <div className="col">
@@ -34,6 +37,9 @@ const Members = () => {
                     <div className="row members-list__entries">
                         <div className="col">
                             John Doe
+                        </div>
+                        <div className="col">
+                            Male
                         </div>
                         <div className="col">
                             30
@@ -61,6 +67,9 @@ const Members = () => {
                             Juan Doe
                         </div>
                         <div className="col">
+                            Male
+                        </div>
+                        <div className="col">
                             20
                         </div>
                         <div className="col">
@@ -84,6 +93,9 @@ const Members = () => {
                     <div className="row members-list__entries">
                         <div className="col">
                             Jay Doe
+                        </div>
+                        <div className="col">
+                            Male
                         </div>
                         <div className="col">
                             10

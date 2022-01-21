@@ -16,7 +16,7 @@ const Account = () => {
     const onSubmit = data => console.log(data)
 
     return  (
-        <Wrapper>
+        <Wrapper title="My Account">
             <div className="row">
                 <div className="col-12">
                     <h1>My Account</h1>

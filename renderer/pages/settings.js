@@ -3,8 +3,8 @@ import Wrapper from "../components/wrapper";
 
 const Index = () => {
     return  (
-        <Wrapper title="Dashboard">
-            <h1>Dashboard</h1>
+        <Wrapper title="Settings">
+            <h1>Settings</h1>
         </Wrapper>
     )
 };

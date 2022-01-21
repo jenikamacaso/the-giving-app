@@ -3,7 +3,7 @@ import Wrapper from "../../components/wrapper";
 
 const MemberEdit = () => {
     return  (
-        <Wrapper>
+        <Wrapper title="Edit Member">
             <h1>Edit Member</h1>
         </Wrapper>
     )

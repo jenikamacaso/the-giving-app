@@ -1,5 +1,6 @@
-import React, {useState, useEffect}  from "react";
+import React, {useState, useEffect} from "react";
 import HeartLoader from "../components/loaders/loader";
+import Head from "next/head";
 
 const AccountWrapper = (props) => {
     const [loadSplash, setLoadSplash] = useState(true);
@@ -11,20 +12,22 @@ const AccountWrapper = (props) => {
         return () => clearTimeout(timer);
     }, []);
 
-    return  (
-        <div className="container-fluid login">
+    return (
+        <>
+            <Head>
+                <title>{props.title} - The Giving App</title>
+            </Head>
             <HeartLoader state={loadSplash}/>
-            <header>
-                <title>The Giving App - Account</title>
-            </header>
-            <div className={!loadSplash ? "d-block" : "d-none"}>
-                <div className="row">
-                    <div className="col-12 content">
-                        {props.children}
+            <div className="container-fluid login">
+                <div className={!loadSplash ? "d-block" : "d-none"}>
+                    <div className="row">
+                        <div className="col-12 content">
+                            {props.children}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 };
 

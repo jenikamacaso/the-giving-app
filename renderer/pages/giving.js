@@ -23,7 +23,7 @@ const Giving = () => {
     }, [showAlertSuccess]);
 
     return (
-        <Wrapper>
+        <Wrapper title="Giving">
             <h1>Giving</h1>
 
             <Alert variant="success" className={showAlertSuccess ? "d-block" : "d-none"}>
@@ -105,7 +105,7 @@ const Giving = () => {
                                     render={({field}) => (
                                         <DatePicker
                                             id="calendar"
-                                            className="w-100"
+                                            className="form-control w-100"
                                             selected={startDate}
                                             maxDate={new Date()}
                                             onChange={(date) => setStartDate(date)}
@@ -114,7 +114,6 @@ const Giving = () => {
                                             showYearDropdown
                                             dropdownMode="select"
                                             placeholderText="Giving Date"
-                                            withPortal
                                         />
                                     )}
                                     rules={{required: false}}
@@ -124,50 +123,50 @@ const Giving = () => {
                                 />
                             </td>
                             <td>
-                                <select className="w-100" {...register("gender")}>
+                                <select className="form-control w-100" {...register("gender")}>
                                     <option value="">Select Member</option>
                                     <option value="john-doe">John Doe</option>
                                     <option value="juan-doe">Juan Doe</option>
                                 </select>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input className="w-100"/>
+                                <input className="form-control w-100"/>
                             </td>
                             <td>
-                                <input disabled={true} readOnly={true} value="1000" className="w-100"/>
+                                <input disabled={true} readOnly={true} value="1000" className="form-control w-100"/>
                             </td>
-                            <td>
-                                <Button className="px-2 py-1" variant="primary"
+                            <td width="150">
+                                <Button className="px-2 py-1 mr-2" variant="primary"
                                         onClick={() => setShowAlertSuccess(true)} active>Save</Button>
                                 <Button className="px-2 py-1" variant="danger"
                                         onClick={() => setShowAlertDanger(true)} active>Cancel</Button>
