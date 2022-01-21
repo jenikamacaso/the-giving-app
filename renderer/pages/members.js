@@ -1,11 +1,20 @@
 import React from "react";
 import Wrapper from "../components/wrapper";
 import Badge from 'react-bootstrap/Badge';
+import Button from "react-bootstrap/Button";
+import Link from "next/link";
 
 const Members = () => {
     return (
         <Wrapper>
-            <h1>Members</h1>
+            <div className="row">
+                <div className="col-12 d-flex align-items-center justify-content-between">
+                    <h1>Members</h1>
+                    <Link href="/member/add">
+                        <a className="btn btn-success">Add new member</a>
+                    </Link>
+                </div>
+            </div>
             <div className="row members-list">
                 <div className="col-12">
                     <div className="row members-list__header">
@@ -34,8 +43,17 @@ const Members = () => {
                                 Member
                             </Badge>
                         </div>
-                        <div className="col">
-                            +
+                        <div className="col py-0">
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/edit">
+                                    <a className="btn btn-outline-dark">Edit</a>
+                                </Link>
+                            </div>
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/delete">
+                                    <a className="btn btn-outline-danger">Delete</a>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="row members-list__entries">
@@ -50,8 +68,17 @@ const Members = () => {
                                 Visitor
                             </Badge>
                         </div>
-                        <div className="col">
-                            +
+                        <div className="col py-0">
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/edit">
+                                    <a className="btn btn-outline-dark">Edit</a>
+                                </Link>
+                            </div>
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/delete">
+                                    <a className="btn btn-outline-danger">Delete</a>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="row members-list__entries">
@@ -66,8 +93,17 @@ const Members = () => {
                                 Inactive
                             </Badge>
                         </div>
-                        <div className="col">
-                            +
+                        <div className="col py-0">
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/edit">
+                                    <a className="btn btn-outline-dark">Edit</a>
+                                </Link>
+                            </div>
+                            <div className="d-inline-block border-0">
+                                <Link href="/member/delete">
+                                    <a className="btn btn-outline-danger">Delete</a>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
