@@ -62,18 +62,22 @@ html {
   flex-flow: column;
   height: calc(100vh - #{$menuHeight});
   justify-content: space-between;
-  padding: 15px 0 15px 15px;
+  padding-bottom: convertPxToRem(15);
 
-  ul {
-    padding-left: 0;
+  &__menu {
+    padding: 15px 0 15px 15px;
 
-    li {
-      border-bottom: 1px solid $lightGray;
-      padding: 10px 0;
+    ul {
+      padding-left: 0;
 
-      a {
-        color: $darkGray;
-        text-decoration: none;
+      li {
+        border-bottom: 1px solid $lightGray;
+        padding: 10px 0;
+
+        a {
+          color: $darkGray;
+          text-decoration: none;
+        }
       }
     }
   }

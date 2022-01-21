@@ -13,8 +13,10 @@ let mainWindow;
 // Initializing the Electron Window
 const createWindow = () => {
     mainWindow = new BrowserWindow({
-        width: 1280,
+        width: 1400,
         height: 900,
+        minWidth: 1400,
+        minHeight: 900,
         webPreferences: {
             nodeIntegration: false,
             preload: join(__dirname, 'preload.js'),

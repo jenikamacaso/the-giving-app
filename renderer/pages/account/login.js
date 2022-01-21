@@ -31,7 +31,7 @@ const AccountLogin = () => {
     }
 
     return  (
-        <AccountWrapper>
+        <AccountWrapper title="Login">
             <div className="h-100 d-flex align-items-center justify-content-center">
                 <Form noValidate onSubmit={handleSubmit(onSubmit)} className="login-wrapper w-25 d-block mx-auto">
                     <h1 className="text-center pb-3">The Giving App</h1>
