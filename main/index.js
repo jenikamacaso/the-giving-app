@@ -8,6 +8,14 @@ const isDev = require('electron-is-dev');
 const path = require('path');
 const prepareNext = require('electron-next');
 
+// Database
+const sqlite3 = require("sqlite3");
+
+const database = new sqlite3.Database("./main/db/db.sqlite3", (err) => {
+    if (err) console.error("Database opening error: ", err);
+    console.log("connected to db!");
+  });
+
 let mainWindow;
 
 // Initializing the Electron Window
@@ -57,6 +65,13 @@ app.setPath(
 // Prepare the renderer once the app is ready
 app.on('ready', async () => {
   await prepareNext('./renderer');
+
+  ipcMain.handle("get-profile-details", (event, args) => {
+    console.log(args);
+    database.get(`SELECT * FROM Users`, (err, data) => {
+      console.log(data);
+    });
+  });
 
   createWindow();
 });

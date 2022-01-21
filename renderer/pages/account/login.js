@@ -1,14 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Router from "next/router";
 import AccountWrapper from "../../components/accountWrapper";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Alert from "react-bootstrap/Alert";
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const AccountLogin = () => {
-    const {register, handleSubmit, watch, errors, control} = useForm();
+    const { register, handleSubmit, watch, errors, control } = useForm();
     const [showAlertSuccess, setShowAlertSuccess] = useState(false);
     const [showAlertDanger, setShowAlertDanger] = useState(false);
     const [isInvalid, setIsInvalid] = useState(false);
@@ -16,7 +16,9 @@ const AccountLogin = () => {
 
     const onSubmit = data => {
         setIsTouched(true)
-        if(data.username === "admin" && data.password === "admin") {
+        if (data.username === "admin" && data.password === "admin") {
+            // Calls api
+            window.api.getProfileInfo({ username: data.username, password: data.password });
             setShowAlertDanger(false)
             setShowAlertSuccess(true)
             setIsInvalid(false)
@@ -30,7 +32,7 @@ const AccountLogin = () => {
         }
     }
 
-    return  (
+    return (
         <AccountWrapper title="Login">
             <div className="h-100 d-flex align-items-center justify-content-center">
                 <Form noValidate onSubmit={handleSubmit(onSubmit)} className="login-wrapper w-25 d-block mx-auto">
@@ -54,13 +56,13 @@ const AccountLogin = () => {
                             label="Username"
                             className="mb-3"
                         >
-                        <Form.Control
-                            {...register("username")}
-                            type="text"
-                            name="username"
-                            placeholder="Username"
-                            isValid={isTouched && !isInvalid}
-                            isInvalid={isTouched && isInvalid} />
+                            <Form.Control
+                                {...register("username")}
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                isValid={isTouched && !isInvalid}
+                                isInvalid={isTouched && isInvalid} />
                         </FloatingLabel>
                     </Form.Group>
 
@@ -83,7 +85,7 @@ const AccountLogin = () => {
                     </Form.Group>
                     <Form.Group className="d-flex justify-content-center" controlId="formBasicActions">
                         <Button type="submit" size="lg" className="px-2 py-1 mx-2" variant="success"
-                                onClick={() => setShowAlertSuccess(true)} active>Login</Button>
+                            onClick={() => setShowAlertSuccess(true)} active>Login</Button>
                     </Form.Group>
                 </Form>
             </div>
