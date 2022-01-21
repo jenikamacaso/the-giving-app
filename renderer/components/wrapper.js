@@ -4,7 +4,10 @@ import HeartLoader from "../components/loaders/loader";
 import Container from '../../node_modules/react-bootstrap/Container';
 import Navbar from '../../node_modules/react-bootstrap/Navbar';
 import Nav from '../../node_modules/react-bootstrap/Nav';
-import NavDropdown from '../../node_modules/react-bootstrap/NavDropdown'
+import NavDropdown from '../../node_modules/react-bootstrap/NavDropdown';
+import {BsFillPeopleFill, BsFillHeartFill, BsFillHouseDoorFill} from "react-icons/bs";
+import {SiMicrosoftexcel} from "react-icons/si";
+import {FaCogs} from "react-icons/fa";
 import Head from "next/head";
 
 const Wrapper = (props) => {
@@ -53,33 +56,37 @@ const Wrapper = (props) => {
                     </div>
                     <div className="row">
                         <div className="col-1 sidebar">
-                            <div className="sidebar__menu">
+                            <div className="sidebar__menu d-flex flex-column justify-content-between h-100">
                                 <ul>
                                     <li>
                                         <Link href="/">
-                                            <a>Dashboard</a>
+                                            <a><BsFillHouseDoorFill/>&nbsp;Dashboard</a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href="/calendar">
-                                            <a>Calendar</a>
+                                            <a><SiMicrosoftexcel/>&nbsp;Calendar</a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href="/members">
-                                            <a>Members</a>
+                                            <a><BsFillPeopleFill/>&nbsp;Members</a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href="/giving">
-                                            <a>Giving</a>
+                                            <a><BsFillHeartFill/>&nbsp;Giving</a>
+                                        </Link>
+                                    </li>
+                                </ul>
+                                <ul className="mb-0">
+                                    <li className="border-0">
+                                        <Link href="/settings">
+                                            <a><FaCogs/>&nbsp;Settings</a>
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
-                            <Link href="/settings">
-                                <a className="btn btn-warning">Settings</a>
-                            </Link>
                         </div>
                         <div className="col-11 content">
                             {props.children}
