@@ -2,77 +2,48 @@
   "name": "tithes-app",
   "version": "0.1.0",
   "private": true,
-  "main": "public/electron.js",
+  "main": "main/index.js",
   "homepage": "./",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
     "bootstrap": "^5.1.3",
-    "fs": "0.0.1-security",
-    "mini-css-extract-plugin": "^2.4.5",
-    "moment": "^2.29.1",
-    "next": "^12.0.8",
-    "react": "^17.0.2",
+    "concurrently": "^7.0.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-next": "^3.1.5",
+    "nodemon": "^2.0.15",
     "react-bootstrap": "^2.1.1",
     "react-calendar": "^3.6.0",
     "react-datepicker": "^4.6.0",
-    "react-dom": "^17.0.2",
-    "react-hook-form": "^7.24.1",
-    "react-moment": "^1.1.1",
+    "react-hook-form": "^7.24.2",
     "reset-scss": "^1.0.0",
-    "sass": "^1.48.0",
+    "sass": "^1.49.0",
     "sqlite3": "^5.0.2",
-    "web-vitals": "^2.1.3"
+    "wait-on": "^6.0.0"
   },
   "scripts": {
-    "start-react": "react-scripts start",
-    "build-react": "react-scripts build",
+    "clean": "rimraf dist renderer/.next renderer/out",
+    "start": "electron .",
     "start-electron": "nodemon --watch ./public/* --exec \"electron .\"",
-    "dev": "concurrently \"next dev\" \"wait-on http://localhost:3000 && npm run start-electron\" ",
-    "postinstall": "electron-builder install-app-deps",
-    "pack-app": "npm run build-react && electron-builder --dir",
+    "dev": "concurrently \"next dev renderer\" \"wait-on http://localhost:3000 && npm run start-electron\" ",
+    "build": "next build renderer && next export renderer",
+    "pack-app": "npm run build && electron-builder --dir",
     "pack-build": "electron-builder --dir",
-    "build": "next build && electron-builder",
-    "start": "next start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron": "wait-on tcp:3000 && electron."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dist": "npm run build && electron-builder"
   },
   "devDependencies": {
-    "concurrently": "^7.0.0",
-    "electron": "^16.0.7",
-    "electron-builder": "~22.10.5",
-    "electron-is-dev": "^2.0.0",
-    "nodemon": "^2.0.15",
-    "wait-on": "^6.0.0"
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "build": {
     "appId": "com.jblcc.tithes",
-    "productName": "Tithes App",
+    "productName": "The Giving App",
     "copyright": "test",
+    "asar": true,
     "files": [
-      "build/**/*"
+      "main",
+      "renderer/out"
     ],
     "directories": {
       "buildResources": "build"
