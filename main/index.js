@@ -26,7 +26,7 @@ const createWindow = () => {
     const url = isDev
         ? 'http://localhost:3000'
         : format({
-            pathname: join(__dirname, '../renderer/out/index.html'),
+            pathname: join(__dirname, './renderer/out/index.html'),
             protocol: 'file:',
             slashes: true,
         })
@@ -54,7 +54,9 @@ app.setPath(
 
 // Prepare the renderer once the app is ready
 app.on('ready', async () => {
-  await prepareNext('./renderer')
+  await prepareNext('./renderer');
+
+  createWindow();
 });
 
 // Quit the app once all windows are closed
@@ -65,11 +67,11 @@ app.on('window-all-closed', () => {
 });
 
 // Activating the app
-app.on('activate', () => {
-    if (mainWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
-});
+// app.on('activate', () => {
+//     if (mainWindow.getAllWindows().length === 0) {
+//         createWindow();
+//     }
+// });
 
 // Logging any exceptions
 process.on('uncaughtException', (error) => {

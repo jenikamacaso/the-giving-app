@@ -22,8 +22,9 @@
   "scripts": {
     "clean": "rimraf dist renderer/.next renderer/out",
     "start": "electron .",
-    "start-electron": "nodemon --watch ./public/* --exec \"electron .\"",
-    "dev": "concurrently \"next dev renderer\" \"wait-on http://localhost:3000 && npm run start-electron\" ",
+    "dev1": "concurrently \"next dev renderer\" \"wait-on http://localhost:3000 && electron .\" ",
+    "dev" : "concurrently \"next dev renderer\" \"electron .\" ",
+    "start-electron": "nodemon --watch ./renderer/out/* --exec \"electron .\"",
     "build": "next build renderer && next export renderer",
     "pack-app": "npm run build && electron-builder --dir",
     "pack-build": "electron-builder --dir",
