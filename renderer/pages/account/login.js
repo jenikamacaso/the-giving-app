@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Router from "next/router";
 import AccountWrapper from "../../components/accountWrapper";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,27 +14,19 @@ const AccountLogin = () => {
     const [isInvalid, setIsInvalid] = useState(false);
     const [isTouched, setIsTouched] = useState(false);
     let profile = useState(null);
-    let version = useState(null);
 
-    const get_version = async () => {
-        version = await window.api.getVersion();
-
-        console.log(version)
-    }
-    
     const onSubmit = async (data) => {
         setIsTouched(true)
-        if (data.username === "admin" && data.password === "admin") {
-            // Calls api
-
-            profile = await window.api.getUser({ username: data.username, password: data.password });
-            console.log(profile)
+        
+        // Calls api
+        profile = await window.api.getUser({ username: data.username, password: data.password });
+        if (profile) {
             setShowAlertDanger(false)
             setShowAlertSuccess(true)
             setIsInvalid(false)
-            // setTimeout(() => {
-            //     Router.push('/')
-            // }, 3000)
+            setTimeout(() => {
+                Router.push('/')
+            }, 3000)
         } else {
             setShowAlertSuccess(false)
             setShowAlertDanger(true)
@@ -45,10 +38,10 @@ const AccountLogin = () => {
         <AccountWrapper title="Login">
             <div className="h-100 d-flex align-items-center justify-content-center">
                 <Form noValidate onSubmit={handleSubmit(onSubmit)} className="login-wrapper w-25 d-block mx-auto">
-                    <h1 className="text-center pb-3">The Giving App {profile}</h1>
+                    <h1 className="text-center pb-3">The Giving App</h1>
 
                     <Alert variant="success" className={showAlertSuccess ? "d-block" : "d-none"}>
-                        Login Successful. Redirecting. 
+                        Login Successful. Redirecting. {profile.Username}
                     </Alert>
                     <Alert variant="danger" className={showAlertDanger ? "d-block" : "d-none"}>
                         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
