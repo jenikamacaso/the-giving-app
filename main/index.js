@@ -16,30 +16,22 @@ const database = new sqlite3.Database("./main/db/db.sqlite3", (err) => {
   console.log("connected to db!");
 });
 
-async function db_all(args) {
-  return new Promise(function (resolve, reject) {
-    database.get(
-      `SELECT * FROM Users WHERE Username = ? AND Password = ?`,
-      [args.username, args.password],
-      (err, data) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(data);
+async function getQuery(query) {
+  console.log(query);
+  return new Promise((resolve, reject) => {
+    database.get(query, (err, rows) => {
+      if (err) {
+        return reject(err);
       }
-    );
+      resolve(rows);
+    });
   });
 }
 
 ipcMain.handle("get/user", async (event, args) => {
-  return db_all(args)
-});
-
-ipcMain.handle("get/version", async (event, args) => {
-  await setTimeout(() => {
-    console.log(app.getVersion());
-  }, 3000);
-  return app.getVersion();
+  return await getQuery(
+    `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`
+  );
 });
 
 let mainWindow;
