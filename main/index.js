@@ -38,18 +38,18 @@ let mainWindow;
 
 // Initializing the Electron Window
 const createWindow = () => {
-  mainWindow = new BrowserWindow({
-    width: 1400,
-    height: 900,
-    minWidth: 1400,
-    minHeight: 900,
-    webPreferences: {
-      nodeIntegration: false,
-      preload: join(__dirname, "/backend/preload.js"),
-      worldSafeExecuteJavaScript: true, // If you're using Electron 12+, this should be enabled by default and does not need to be added here.
-      contextIsolation: true, // Isolating context so our app is not exposed to random javascript executions making it safer.
-    },
-  });
+    mainWindow = new BrowserWindow({
+        width: 1500,
+        height: 900,
+        minWidth: 1500,
+        minHeight: 900,
+        webPreferences: {
+            nodeIntegration: false,
+            preload: join(__dirname, "/backend/preload.js"),
+            worldSafeExecuteJavaScript: true, // If you're using Electron 12+, this should be enabled by default and does not need to be added here.
+            contextIsolation: true, // Isolating context so our app is not exposed to random javascript executions making it safer.
+        },
+    })
 
   const url = isDev
     ? "http://localhost:3000"

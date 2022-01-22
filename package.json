@@ -1,5 +1,5 @@
 {
-  "name": "the-giving-app",
+  "name": "The Giving App",
   "version": "0.1.0",
   "private": true,
   "main": "main/index.js",
@@ -14,6 +14,8 @@
     "react-calendar": "^3.6.0",
     "react-datepicker": "^4.6.0",
     "react-hook-form": "^7.24.2",
+    "react-icons": "^4.3.1",
+    "react-vis": "^1.11.7",
     "reset-scss": "^1.0.0",
     "sass": "^1.49.0",
     "sqlite3": "^5.0.2",
@@ -22,7 +24,7 @@
   "scripts": {
     "clean": "rimraf dist renderer/.next renderer/out",
     "start": "electron .",
-    "dev" : "concurrently \"next dev renderer\" \"electron .\" ",
+    "dev": "concurrently \"next dev renderer\" \"electron .\" ",
     "start-electron": "nodemon --watch ./renderer/out/* --exec \"electron .\"",
     "build": "next build renderer && next export renderer",
     "pack-app": "npm run build && electron-builder --dir",

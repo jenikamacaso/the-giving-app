@@ -123,6 +123,6 @@ $defaultRootSize: 16;
  * Pixels to REM Converter
  */
 @function convertPxToRem($px) {
-  $remFormula: $px / $defaultRootSize + .20rem;
+  $remFormula: calc($px / $defaultRootSize) + .20rem;
   @return $remFormula;
 }
