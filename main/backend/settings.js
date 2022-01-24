@@ -7,13 +7,13 @@ isLoggedIn = async () => {
 };
 
 login = async (user) => {
-  console.log("persist login", user);
+  console.log("Login!");
   store.set("isLoggedIn", true);
   store.set("user", user);
 };
 
 logout = async () => {
-  console.log("Logout");
+  console.log("Logout!");
   store.delete("isLoggedIn");
   store.delete("user");
 };

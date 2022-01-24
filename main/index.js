@@ -10,7 +10,9 @@ const prepareNext = require("electron-next");
 
 // Persist Store
 const { login, logout, isLoggedIn } = require("./backend/settings");
-const { getQuery } = require("./getQuery");
+
+// Queries
+const { getQuery } = require("./db/queries/getQuery");
 
 ipcMain.on("isLoggedIn", async (event, args) => {
   const isLog = await isLoggedIn();
@@ -25,7 +27,7 @@ ipcMain.handle("get/user", async (event, args) => {
   const data = await getQuery(
     `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`
   );
-  await login(data);
+  return await login(data);
 });
 
 let mainWindow;

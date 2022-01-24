@@ -10,6 +10,7 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { FaCogs } from "react-icons/fa";
 import Head from "next/head";
 import Router from "next/router";
+
 const Wrapper = (props) => {
     const [loadSplash, setLoadSplash] = useState(true);
     let isLoggedIn = false;

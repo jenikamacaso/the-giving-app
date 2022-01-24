@@ -15,11 +15,11 @@ const AccountLogin = () => {
     const [isTouched, setIsTouched] = useState(false);
     let profile = useState(null);
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
         setIsTouched(true)
         
         // Calls api
-        profile = await window.api.getUser({ username: data.username, password: data.password });
+        profile = window.api.getUser({ username: data.username, password: data.password });
         console.log(profile)
         if (profile) {
             setShowAlertDanger(false)
@@ -27,7 +27,7 @@ const AccountLogin = () => {
             setIsInvalid(false)
             setTimeout(() => {
                 Router.push('/')
-            }, 3000)
+            }, 500)
         } else {
             setShowAlertSuccess(false)
             setShowAlertDanger(true)

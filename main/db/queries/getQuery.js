@@ -1,14 +1,17 @@
-const { database } = require("./db/database");
+const { database } = require("../database");
 
 
 async function getQuery(query) {
     return new Promise((resolve, reject) => {
-        database.get(query, (err, rows) => {
+        database.get(query, (err, val) => {
             if (err) {
                 return reject(err);
             }
-            resolve(rows);
+            resolve(val);
         });
     });
 }
-exports.getQuery = getQuery;
+module.exports = {
+    getQuery: getQuery
+  };
+  
