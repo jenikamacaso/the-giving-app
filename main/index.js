@@ -9,7 +9,7 @@ const path = require("path");
 const prepareNext = require("electron-next");
 
 // Persist Store
-const { login, logout, isLoggedIn } = require("./backend/settings");
+const { login, logout, isLoggedIn } = require("./backend/store");
 
 // Queries
 const { getQuery } = require("./db/queries/getQuery");
@@ -23,11 +23,16 @@ ipcMain.on("logout", (event, args) => {
   event.returnValue = logout();
 });
 
-ipcMain.handle("get/user", async (event, args) => {
-  const data = await getQuery(
-    `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`
-  );
+ipcMain.handle("login", async (event, args) => {
+  const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
+  const data = await getQuery(q);
   return await login(data);
+});
+
+ipcMain.handle("get/user", async (event, args) => {
+  const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
+  const data = await getQuery(q);
+  return await data;
 });
 
 let mainWindow;

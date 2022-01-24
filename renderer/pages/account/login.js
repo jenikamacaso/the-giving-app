@@ -19,7 +19,7 @@ const AccountLogin = () => {
         setIsTouched(true)
         
         // Calls api
-        profile = window.api.getUser({ username: data.username, password: data.password });
+        profile = window.api.login({ username: data.username, password: data.password });
         if (profile) {
             setShowAlertDanger(false)
             setShowAlertSuccess(true)
