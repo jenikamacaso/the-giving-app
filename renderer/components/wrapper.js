@@ -16,9 +16,7 @@ const Wrapper = (props) => {
     let isLoggedIn = false;
 
     const login = () => {
-        console.log('calling is_login')
         isLoggedIn = window.api.isLoggedIn();
-        console.log(isLoggedIn)
     }
 
     const logout = () => {
