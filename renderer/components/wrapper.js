@@ -10,25 +10,24 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { FaCogs } from "react-icons/fa";
 import Head from "next/head";
 import Router from "next/router";
-
 const Wrapper = (props) => {
     const [loadSplash, setLoadSplash] = useState(true);
     let isLoggedIn = false;
 
-    const is_login = () => {
+    const login = () => {
         console.log('calling is_login')
         isLoggedIn = window.api.isLoggedIn();
         console.log(isLoggedIn)
     }
 
-    const get_login = async () => {
-        v = await window.api.isLoggedIn();
-
-        console.log(v)
+    const logout = () => {
+        console.log('calling logout')
+        window.api.logout();
     }
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            is_login();
+            login();
             setLoadSplash(false)
 
             if (!isLoggedIn) {
@@ -65,7 +64,7 @@ const Wrapper = (props) => {
                                             <NavDropdown.Item href="/reports">Reports</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item href="/account/login">Login</NavDropdown.Item>
-                                            <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+                                            <NavDropdown.Item href="#action/3.4" onClick={() => logout()}>Logout</NavDropdown.Item>
                                         </NavDropdown>
                                     </Nav>
                                 </Navbar.Collapse>

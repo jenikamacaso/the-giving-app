@@ -2,19 +2,21 @@ const Store = require("electron-store");
 
 const store = new Store();
 
-function isLoggedIn() {
+isLoggedIn = async () => {
   return store.get("isLoggedIn");
-}
+};
 
-function login(user) {
-    store.set("isLoggedIn", true);
-    console.log("persist login", user);
-}
+login = async (user) => {
+  console.log("persist login", user);
+  store.set("isLoggedIn", true);
+  store.set("user", user);
+};
 
-function logout() {
+logout = async () => {
+  console.log("Logout");
   store.delete("isLoggedIn");
-  console.log(store.get("isLoggedIn"));
-}
+  store.delete("user");
+};
 
 module.exports = {
   isLoggedIn: isLoggedIn,

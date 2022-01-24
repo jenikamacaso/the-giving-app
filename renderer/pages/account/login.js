@@ -20,6 +20,7 @@ const AccountLogin = () => {
         
         // Calls api
         profile = await window.api.getUser({ username: data.username, password: data.password });
+        console.log(profile)
         if (profile) {
             setShowAlertDanger(false)
             setShowAlertSuccess(true)

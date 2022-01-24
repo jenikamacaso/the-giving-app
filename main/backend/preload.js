@@ -5,6 +5,7 @@ const WINDOW_API = {
   getVersion: () => ipcRenderer.invoke("get/version"),
 
   isLoggedIn: () => ipcRenderer.sendSync("isLoggedIn"),
+  logout: () => ipcRenderer.sendSync("logout"),
   getUser: (args) => ipcRenderer.invoke("get/user", args),
 };
 
