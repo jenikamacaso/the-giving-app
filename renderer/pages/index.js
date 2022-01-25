@@ -31,7 +31,8 @@ const Index = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             // Calls api
-            user = window.api.getUser({ username: data.username, password: data.password });
+            user = window.api.getUser({ username: data.username, password: data.password }).then(data => console.log(data))
+            console.log(user)
         }, 0);
         return () => clearTimeout(timer);
     }, []);
