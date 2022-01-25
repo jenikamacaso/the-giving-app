@@ -58,10 +58,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Reports</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/reports">Generate</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -73,10 +69,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Members</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-dark" href="/members">View</Card.Link>
                                     <Card.Link className="btn btn-success" href="/member/add">Add new</Card.Link>
                                 </Card.Body>
@@ -88,10 +80,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Giving</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/giving">View</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -103,10 +91,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Calendar</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/calendar">View</Card.Link>
                                 </Card.Body>
                             </Card>
