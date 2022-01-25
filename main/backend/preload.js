@@ -7,7 +7,8 @@ const WINDOW_API = {
   isLoggedIn: () => ipcRenderer.sendSync("isLoggedIn"),
   logout: () => ipcRenderer.sendSync("logout"),
   login: (args) => ipcRenderer.invoke("login", args),
-  getUser: (args) => ipcRenderer.invoke("get/user", args).then(data => data)
+  getUser: (args) =>
+    ipcRenderer.invoke("get/user", args).then((value) => value),
 };
 
 contextBridge.exposeInMainWorld("api", WINDOW_API);

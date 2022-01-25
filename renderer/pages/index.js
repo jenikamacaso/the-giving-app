@@ -28,13 +28,10 @@ const Index = () => {
         { x: 9, y: 9 }
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            // Calls api
-            user = window.api.getUser({ username: data.username, password: data.password }).then(data => console.log(data))
-            console.log(user)
-        }, 0);
-        return () => clearTimeout(timer);
+    useEffect(async () => {
+        user = await window.api.getUser({ username: 'admin', password: 'admin' })
+        console.log(user)
+        return () => [];
     }, []);
 
     return (
