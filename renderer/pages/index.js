@@ -1,4 +1,4 @@
-import React, {useState}  from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "../components/wrapper";
 import { BsFillPeopleFill, BsFillHeartFill } from "react-icons/bs";
 import { SiMicrosoftexcel } from "react-icons/si";
@@ -7,31 +7,40 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import 'react-vis/dist/style.css';
-import {XYPlot, LineSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines} from 'react-vis';
+import { XYPlot, LineSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines } from 'react-vis';
 
 const Index = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    let user = useState(null);
 
     const data = [
-        {x: 0, y: 8},
-        {x: 1, y: 5},
-        {x: 2, y: 4},
-        {x: 3, y: 9},
-        {x: 4, y: 9},
-        {x: 5, y: 7},
-        {x: 6, y: 6},
-        {x: 7, y: 3},
-        {x: 8, y: 2},
-        {x: 9, y: 9}
+        { x: 0, y: 8 },
+        { x: 1, y: 5 },
+        { x: 2, y: 4 },
+        { x: 3, y: 9 },
+        { x: 4, y: 9 },
+        { x: 5, y: 7 },
+        { x: 6, y: 6 },
+        { x: 7, y: 3 },
+        { x: 8, y: 2 },
+        { x: 9, y: 9 }
     ];
 
-    return  (
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            // Calls api
+            user = window.api.getUser({ username: data.username, password: data.password });
+        }, 0);
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
         <Wrapper title="Dashboard">
 
             <div className="d-flex align-items-center justify-content-start">
-                <h1>Dashboard</h1>
+                <h1>Dashboard Hi {user.Username}</h1>
                 <div className="mx-3">
                     <Button variant="link" onClick={handleShow}>
                         Show recent activities
@@ -54,7 +63,7 @@ const Index = () => {
                     <div className="row">
                         <div className="col-3 text-center">
                             <Card className="p-3">
-                                <SiMicrosoftexcel size={70} className="w-100"/>
+                                <SiMicrosoftexcel size={70} className="w-100" />
                                 <Card.Body>
                                     <Card.Title>Reports</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
@@ -65,7 +74,7 @@ const Index = () => {
                         </div>
                         <div className="col-3 text-center">
                             <Card className="p-3">
-                                <BsFillPeopleFill size={70} className="w-100"/>
+                                <BsFillPeopleFill size={70} className="w-100" />
                                 <Card.Body>
                                     <Card.Title>Members</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
@@ -76,7 +85,7 @@ const Index = () => {
                         </div>
                         <div className="col-3 text-center">
                             <Card className="p-3">
-                                <BsFillHeartFill size={70} className="w-100"/>
+                                <BsFillHeartFill size={70} className="w-100" />
                                 <Card.Body>
                                     <Card.Title>Giving</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
@@ -87,7 +96,7 @@ const Index = () => {
                         </div>
                         <div className="col-3 text-center">
                             <Card className="p-3">
-                                <FaRegCalendarAlt size={70} className="w-100"/>
+                                <FaRegCalendarAlt size={70} className="w-100" />
                                 <Card.Body>
                                     <Card.Title>Calendar</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>

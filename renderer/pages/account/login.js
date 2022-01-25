@@ -1,28 +1,32 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import AccountWrapper from "../../components/accountWrapper";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Alert from "react-bootstrap/Alert";
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const AccountLogin = () => {
-    const {register, handleSubmit, watch, errors, control} = useForm();
+    const { register, handleSubmit, watch, errors, control } = useForm();
     const [showAlertSuccess, setShowAlertSuccess] = useState(false);
     const [showAlertDanger, setShowAlertDanger] = useState(false);
     const [isInvalid, setIsInvalid] = useState(false);
     const [isTouched, setIsTouched] = useState(false);
+    let profile = useState(null);
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         setIsTouched(true)
-        if(data.username === "admin" && data.password === "admin") {
+        
+        // Calls api
+        profile = window.api.login({ username: data.username, password: data.password });
+        if (profile) {
             setShowAlertDanger(false)
             setShowAlertSuccess(true)
             setIsInvalid(false)
             setTimeout(() => {
                 Router.push('/')
-            }, 3000)
+            }, 500)
         } else {
             setShowAlertSuccess(false)
             setShowAlertDanger(true)
@@ -30,14 +34,14 @@ const AccountLogin = () => {
         }
     }
 
-    return  (
+    return (
         <AccountWrapper title="Login">
             <div className="h-100 d-flex align-items-center justify-content-center">
                 <Form noValidate onSubmit={handleSubmit(onSubmit)} className="login-wrapper w-25 d-block mx-auto">
                     <h1 className="text-center pb-3">The Giving App</h1>
 
                     <Alert variant="success" className={showAlertSuccess ? "d-block" : "d-none"}>
-                        Login Successful. Redirecting.
+                        Login Successful. Redirecting. {profile.Username}
                     </Alert>
                     <Alert variant="danger" className={showAlertDanger ? "d-block" : "d-none"}>
                         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
@@ -54,13 +58,13 @@ const AccountLogin = () => {
                             label="Username"
                             className="mb-3"
                         >
-                        <Form.Control
-                            {...register("username")}
-                            type="text"
-                            name="username"
-                            placeholder="Username"
-                            isValid={isTouched && !isInvalid}
-                            isInvalid={isTouched && isInvalid} />
+                            <Form.Control
+                                {...register("username")}
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                isValid={isTouched && !isInvalid}
+                                isInvalid={isTouched && isInvalid} />
                         </FloatingLabel>
                     </Form.Group>
 
@@ -83,7 +87,7 @@ const AccountLogin = () => {
                     </Form.Group>
                     <Form.Group className="d-flex justify-content-center" controlId="formBasicActions">
                         <Button type="submit" size="lg" className="px-2 py-1 mx-2" variant="success"
-                                onClick={() => setShowAlertSuccess(true)} active>Login</Button>
+                            onClick={() => setShowAlertSuccess(true)} active>Login</Button>
                     </Form.Group>
                 </Form>
             </div>
