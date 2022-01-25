@@ -8,12 +8,14 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import 'react-vis/dist/style.css';
 import { XYPlot, LineSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines } from 'react-vis';
+import {get} from "react-hook-form";
 
 const Index = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let user = useState(null);
+    const [getUser, setUser] = useState(null);
 
     const data = [
         { x: 0, y: 8 },
@@ -28,19 +30,16 @@ const Index = () => {
         { x: 9, y: 9 }
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            // Calls api
-            user = window.api.getUser({ username: data.username, password: data.password });
-        }, 0);
-        return () => clearTimeout(timer);
-    }, []);
+    useEffect(async () => {
+        user = await window.api.getUser({ username: 'admin', password: 'admin' })
+        setUser(user);
+    }, getUser);
 
     return (
         <Wrapper title="Dashboard">
 
             <div className="d-flex align-items-center justify-content-start">
-                <h1>Dashboard Hi {user.Username}</h1>
+                <h1>Welcome, {getUser && getUser.Username}!</h1>
                 <div className="mx-3">
                     <Button variant="link" onClick={handleShow}>
                         Show recent activities
@@ -108,7 +107,7 @@ const Index = () => {
                     </div>
                     <div className="row mt-3">
                         <h2>Collection</h2>
-                        <XYPlot height={200} width={1400} stroke="green">
+                        <XYPlot height={200} width={1200} stroke="green">
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis />

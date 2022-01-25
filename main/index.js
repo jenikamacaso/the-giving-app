@@ -53,7 +53,7 @@ const createWindow = () => {
   });
 
   const url = isDev
-    ? "http://localhost:3000"
+    ? "http://localhost:3002"
     : format({
         pathname: join(__dirname, "./renderer/out/index.html"),
         protocol: "file:",
