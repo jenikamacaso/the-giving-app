@@ -32,7 +32,6 @@ const Index = () => {
     useEffect(async () => {
         user = window.api.getUser()
         setUser(user);
-        console.log(user)
     }, getUser);
 
     return (
