@@ -3,8 +3,8 @@ const { ipcRenderer, contextBridge } = require("electron");
 const WINDOW_API = {
   // Send async
   isLoggedIn: () => ipcRenderer.sendSync("isLoggedIn"),
-  // getUser: (args) => ipcRenderer.invoke("get/user", args).then((value) => value),
   getUser: () => ipcRenderer.sendSync("get/user"),
+  // getUser: (args) => ipcRenderer.invoke("get/user", args).then((value) => value),
 
   // Invoke
   login: (args) => ipcRenderer.invoke("login", args),
