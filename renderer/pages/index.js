@@ -14,6 +14,7 @@ const Index = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let user = useState(null);
+    const [getUser, setUser] = useState(null);
 
     const data = [
         { x: 0, y: 8 },
@@ -29,16 +30,16 @@ const Index = () => {
     ];
 
     useEffect(async () => {
-        user = window.api.getUser();
+        user = window.api.getUser()
+        setUser(user);
         console.log(user)
-        return () => [];
-    }, []);
+    }, getUser);
 
     return (
         <Wrapper title="Dashboard">
 
             <div className="d-flex align-items-center justify-content-start">
-                <h1>Dashboard Hi {user.Username}</h1>
+                <h1>Welcome, {getUser && getUser.Username}!</h1>
                 <div className="mx-3">
                     <Button variant="link" onClick={handleShow}>
                         Show recent activities
@@ -65,10 +66,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Reports</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/reports">Generate</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -80,10 +77,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Members</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-dark" href="/members">View</Card.Link>
                                     <Card.Link className="btn btn-success" href="/member/add">Add new</Card.Link>
                                 </Card.Body>
@@ -95,10 +88,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Giving</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/giving">View</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -110,10 +99,6 @@ const Index = () => {
                                 <Card.Body>
                                     <Card.Title>Calendar</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
                                     <Card.Link className="btn btn-success" href="/calendar">View</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -122,7 +107,7 @@ const Index = () => {
                     </div>
                     <div className="row mt-3">
                         <h2>Collection</h2>
-                        <XYPlot height={200} width={1400} stroke="green">
+                        <XYPlot height={200} width={1200} stroke="green">
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis />
