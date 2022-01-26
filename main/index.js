@@ -15,8 +15,8 @@ const { login, logout, isLoggedIn } = require("./backend/store");
 const { getQuery } = require("./db/queries/getQuery");
 
 ipcMain.on("isLoggedIn", async (event, args) => {
-  const isLoggedIn = await isLoggedIn();
-  event.returnValue = isLoggedIn;
+  const isLog = await isLoggedIn();
+  event.returnValue = isLog;
 });
 
 ipcMain.on("get/user", async (event, args) => {
