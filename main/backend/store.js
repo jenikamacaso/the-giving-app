@@ -18,6 +18,10 @@ logout = async () => {
   store.delete("user");
 };
 
+getUser = async () => {
+  return store.get("user");
+};
+
 module.exports = {
   isLoggedIn: isLoggedIn,
   login: login,

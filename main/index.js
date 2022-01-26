@@ -19,6 +19,11 @@ ipcMain.on("isLoggedIn", async (event, args) => {
   event.returnValue = isLog;
 });
 
+ipcMain.on("get/user", async (event, args) => {
+  const user = await getUser();
+  event.returnValue = user;
+});
+
 ipcMain.on("logout", (event, args) => {
   event.returnValue = logout();
 });
@@ -29,11 +34,11 @@ ipcMain.handle("login", async (event, args) => {
   return await login(data);
 });
 
-ipcMain.handle("get/user", async (event, args) => {
-  const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
-  const data = await getQuery(q);
-  return await data;
-});
+// ipcMain.handle("get/user", async (event, args) => {
+//   const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
+//   const data = await getQuery(q);
+//   return await data;
+// });
 
 let mainWindow;
 
