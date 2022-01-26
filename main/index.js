@@ -15,8 +15,13 @@ const { login, logout, isLoggedIn } = require("./backend/store");
 const { getQuery } = require("./db/queries/getQuery");
 
 ipcMain.on("isLoggedIn", async (event, args) => {
-  const isLog = await isLoggedIn();
-  event.returnValue = isLog;
+  const isLoggedIn = await isLoggedIn();
+  event.returnValue = isLoggedIn;
+});
+
+ipcMain.on("get/user", async (event, args) => {
+  const user = await getUser();
+  event.returnValue = user;
 });
 
 ipcMain.on("logout", (event, args) => {
@@ -29,11 +34,11 @@ ipcMain.handle("login", async (event, args) => {
   return await login(data);
 });
 
-ipcMain.handle("get/user", async (event, args) => {
-  const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
-  const data = await getQuery(q);
-  return await data;
-});
+// ipcMain.handle("get/user", async (event, args) => {
+//   const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
+//   const data = await getQuery(q);
+//   return await data;
+// });
 
 let mainWindow;
 

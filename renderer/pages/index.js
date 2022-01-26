@@ -29,7 +29,7 @@ const Index = () => {
     ];
 
     useEffect(async () => {
-        user = await window.api.getUser({ username: 'admin', password: 'admin' })
+        user = window.api.getUser();
         console.log(user)
         return () => [];
     }, []);
