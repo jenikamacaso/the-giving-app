@@ -25,15 +25,12 @@ const Wrapper = (props) => {
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            login();
-            setLoadSplash(false)
+        login();
+        setLoadSplash(false)
 
-            if (!isLoggedIn) {
-                Router.push('/account/login')
-            }
-        }, 1000);
-        return () => clearTimeout(timer);
+        if (!isLoggedIn) {
+            Router.push('/account/login')
+        }
     }, []);
 
     return (
