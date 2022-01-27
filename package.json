@@ -40,9 +40,9 @@
     "react-dom": "^17.0.2"
   },
   "build": {
-    "appId": "com.jblcc.tithes",
+    "appId": "com.the.giving.app",
     "productName": "The Giving App",
-    "copyright": "test",
+    "copyright": "The Giving App Copyrights",
     "asar": true,
     "files": [
       "main",
@@ -57,8 +57,8 @@
         "to": ".assets/randomfile.png"
       },
       {
-        "from": "./db/database.js",
-        "to": "db/database.js",
+        "from": "./main/db/database.js",
+        "to": "main/db/database.js",
         "filter": [
           "*/"
         ]

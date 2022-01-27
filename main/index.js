@@ -52,7 +52,10 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: false,
       preload: join(__dirname, "/backend/preload.js"),
-      worldSafeExecuteJavaScript: true, // If you're using Electron 12+, this should be enabled by default and does not need to be added here.
+      preload: isDev
+        ? path.join(__dirname, "/backend/preload.js") // Loading it from the public folder for dev
+        : path.join(app.getAppPath(), "./main/backend/preload.js"), // Loading it from the build folder for production
+
       contextIsolation: true, // Isolating context so our app is not exposed to random javascript executions making it safer.
     },
   });
@@ -60,7 +63,7 @@ const createWindow = () => {
   const url = isDev
     ? "http://localhost:3000"
     : format({
-        pathname: join(__dirname, "./renderer/out/index.html"),
+        pathname: join(__dirname, "../renderer/out/index.html"),
         protocol: "file:",
         slashes: true,
       });
