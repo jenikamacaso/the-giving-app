@@ -48,9 +48,6 @@
       "main",
       "renderer/out"
     ],
-    "directories": {
-      "buildResources": "build"
-    },
     "extraResources": [
       {
         "from": ".build/assets/randomfile.png",
@@ -60,7 +57,35 @@
         "from": "./main/db/database.js",
         "to": "main/db/database.js",
         "filter": [
-          "*/"
+          "**/*"
+        ]
+      },
+      {
+        "from": "./main/db/queries/getQuery.js",
+        "to": "main/db/queries/getQuery.js",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "./main/db/db.sqlite3",
+        "to": "main/db/db.sqlite3",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "./main/backend/preload.js",
+        "to": "main/backend/preload.js",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "./main/backend/store.js",
+        "to": "main/backend/store.js",
+        "filter": [
+          "**/*"
         ]
       }
     ],
