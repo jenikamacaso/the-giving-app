@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import 'react-vis/dist/style.css';
 import { XYPlot, LineSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines } from 'react-vis';
-import {get} from "react-hook-form";
 
 const Index = () => {
     const [show, setShow] = useState(false);

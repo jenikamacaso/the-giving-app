@@ -1,22 +1,35 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Wrapper from "../../components/wrapper";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import {Controller, useForm} from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const MemberAdd = () => {
-    const {register, handleSubmit, watch, errors, control} = useForm();
+    const { register, handleSubmit, watch, errors, control } = useForm();
     const [showAlertSuccess, setShowAlertSuccess] = useState(false);
     const [showAlertDanger, setShowAlertDanger] = useState(false);
     const [isInvalid, setIsInvalid] = useState(false);
     const [isTouched, setIsTouched] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
 
-    const onSubmit = data => console.log(data)
-    return  (
+    const onSubmit = async (data) => {
+        // Calls api
+        const result = await window.api.createMember({
+            Name: data.name,
+            Email: 'test@gmail.com',
+            Address: 'Test Address',
+            Phone: '0394534534',
+            DateOfBirth: 'June 30, 1991',
+            IsActive: true,
+            IsDeleted: false,
+        });
+
+        console.log(result)
+    }
+    return (
         <Wrapper title="Add Member">
             <div className="row">
                 <div className="col-12">
@@ -71,7 +84,7 @@ const MemberAdd = () => {
                         <Form.Group className="mb-3" controlId="formBasicBirthday">
                             <Form.Label>Birthday</Form.Label>
                             <Controller
-                                render={({field}) => (
+                                render={({ field }) => (
                                     <DatePicker
                                         id="calendar"
                                         className="form-control w-100"
@@ -86,7 +99,7 @@ const MemberAdd = () => {
                                     />
                                 )}
                                 defaultValue=""
-                                rules={{required: false}}
+                                rules={{ required: false }}
                                 name="birthday"
                                 control={control}
                                 valueName="selected"
@@ -95,7 +108,7 @@ const MemberAdd = () => {
 
                         <Form.Group className="d-flex justify-content-start" controlId="formBasicActions">
                             <Button type="submit" size="lg" className="px-2 py-1" variant="success"
-                                    onClick={() => setShowAlertSuccess(true)} active>Save</Button>
+                                onClick={() => setShowAlertSuccess(true)} active>Save</Button>
                         </Form.Group>
                     </Form>
                 </div>
