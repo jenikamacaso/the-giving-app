@@ -9,6 +9,5 @@ const db = new sqlite3.Database("./main/db/db.sqlite3", (err) => {
 exports.database = db;
 
 module.exports = {
-  database: db
+  database: db,
 };
-

@@ -13,6 +13,7 @@ const { login, logout, isLoggedIn } = require("./backend/store");
 
 // Queries
 const { getQuery } = require("./db/queries/getQuery");
+const { postQuery } = require("./db/queries/postQuery");
 
 ipcMain.on("isLoggedIn", async (event, args) => {
   const isLog = await isLoggedIn();
@@ -24,14 +25,27 @@ ipcMain.on("get/user", async (event, args) => {
   event.returnValue = user;
 });
 
-ipcMain.on("logout", (event, args) => {
-  event.returnValue = logout();
+ipcMain.on("logout", async () => {
+  return await logout(data);
 });
 
+// Invoke
 ipcMain.handle("login", async (event, args) => {
   const q = `SELECT * FROM Users WHERE Username = '${args.username}' AND Password = '${args.password}'`;
   const data = await getQuery(q);
   return await login(data);
+});
+
+ipcMain.handle("create/user", async (event, args) => {
+  const q = `INSERT INTO Users (Username, Password, Name) VALUES (${args})`;
+  return await postQuery(q);
+});
+
+ipcMain.handle("create/member", async (event, args) => {
+  console.log("POSTING...");
+  const q = `INSERT INTO Members (Name, Email, Address, Phone, DateOfBirth, IsActive, IsDeleted) VALUES 
+  ('${args.Name}', '${args.Email}', '${args.Address}', '${args.Phone}', '${args.DateOfBirth}', '${args.IsActive}', '${args.IsDeleted}' )`;
+  return await postQuery(q);
 });
 
 // ipcMain.handle("get/user", async (event, args) => {
