@@ -65,7 +65,6 @@ const createWindow = () => {
     minHeight: 900,
     webPreferences: {
       nodeIntegration: false,
-      preload: join(__dirname, "/backend/preload.js"),
       preload: isDev
         ? path.join(__dirname, "/backend/preload.js") // Loading it from the public folder for dev
         : path.join(app.getAppPath(), "./main/backend/preload.js"), // Loading it from the build folder for production
@@ -85,9 +84,9 @@ const createWindow = () => {
   mainWindow.loadURL(url);
 
   // Setting Window Icon - Asset file needs to be in the public/images folder.
-  mainWindow.setIcon(
-    path.join(__dirname, "/renderer/assets/images/appicon.ico")
-  );
+  // mainWindow.setIcon(
+  //   path.join(__dirname, "/renderer/assets/images/appicon.ico")
+  // );
 
   // In development mode, if the window has loaded, then load the dev tools.
   if (isDev) {
