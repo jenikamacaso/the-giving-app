@@ -22,6 +22,7 @@ const Wrapper = (props) => {
     const logout = () => {
         console.log('calling logout')
         window.api.logout();
+        Router.push('/account/login')
     }
 
     useEffect(() => {

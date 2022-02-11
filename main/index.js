@@ -16,7 +16,9 @@ const { getQuery } = require("./db/queries/getQuery");
 const { postQuery } = require("./db/queries/postQuery");
 
 ipcMain.on("isLoggedIn", async (event, args) => {
+  console.log("calling isLoggedIn");
   const isLog = await isLoggedIn();
+  console.log(app.getAppPath());
   event.returnValue = isLog;
 });
 
@@ -70,6 +72,7 @@ const createWindow = () => {
         : path.join(app.getAppPath(), "./main/backend/preload.js"), // Loading it from the build folder for production
 
       contextIsolation: true, // Isolating context so our app is not exposed to random javascript executions making it safer.
+      enableRemoteModule: true,
     },
   });
 
