@@ -11,6 +11,7 @@ getQuery = async (query) => {
   });
 };
 
+
 query = async (query) => {
   return new Promise((resolve, reject) => {
     console.log(query);
