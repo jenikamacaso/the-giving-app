@@ -11,6 +11,7 @@ const WINDOW_API = {
   login: (args) => ipcRenderer.invoke("login", args),
   createUser: (args) => ipcRenderer.invoke("create/user", args),
   createMember: (args) => ipcRenderer.invoke("create/member", args),
+  updateMember: (args) => ipcRenderer.invoke("update/member", args),
 };
 
 contextBridge.exposeInMainWorld("api", WINDOW_API);
