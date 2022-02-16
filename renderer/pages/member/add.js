@@ -23,7 +23,7 @@ const MemberAdd = () => {
             Address: 'Test Address',
             Phone: '0394534534',
             DateOfBirth: 'June 30, 1991',
-            IsActive: true,
+            Status: 'Active',
             IsDeleted: false,
         });
 

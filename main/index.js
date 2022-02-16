@@ -12,7 +12,7 @@ const prepareNext = require("electron-next");
 const { login, logout, isLoggedIn } = require("./backend/store");
 
 // Queries
-const { getQuery } = require("./db/queries/getQuery");
+const { getQuery, getAllQuery } = require("./db/queries/getQuery");
 const { postQuery } = require("./db/queries/postQuery");
 const { query } = require("./db/queries/query");
 
@@ -44,21 +44,32 @@ ipcMain.handle("create/user", async (event, args) => {
   return await postQuery(q);
 });
 
+// Members
+ipcMain.handle("view/members", async (event, args) => {
+  const q = `SELECT * FROM Members`;
+  return await getAllQuery(q);
+});
+
+ipcMain.handle("view/member", async (event, args) => {
+  const q = `SELECT * FROM Members WHERE Id = '${args.Id}'`;
+  return await getQuery(q);
+});
+
 ipcMain.handle("create/member", async (event, args) => {
   console.log("POSTING...");
-  const q = `INSERT INTO Members (Name, Email, Address, Phone, DateOfBirth, IsActive, IsDeleted) VALUES 
-  ('${args.Name}', '${args.Email}', '${args.Address}', '${args.Phone}', '${args.DateOfBirth}', '${args.IsActive}', '${args.IsDeleted}' )`;
+  const q = `INSERT INTO Members (Name, Email, Address, Phone, DateOfBirth, Status, IsDeleted) VALUES 
+  ('${args.Name}', '${args.Email}', '${args.Address}', '${args.Phone}', '${args.DateOfBirth}', '${args.Age}', '${args.Gender}', '${args.Status}', '${args.IsDeleted}' )`;
   return await query(q);
 });
 
 ipcMain.handle("update/member", async (event, args) => {
   console.log("UPDATING...");
-  const q = `Update Members SET Name="${args.Name}, Email="${args.Email}, Address="${args.Address}, Phone="${args.Phone}, DateOfBirth="${args.DateOfBirth}, IsActive="${args.IsActive}, IsDeleted="${args.IsDeleted}" 
+  const q = `Update Members SET Name="${args.Name}, Email="${args.Email}, Address="${args.Address}, Phone="${args.Phone}, DateOfBirth="${args.DateOfBirth},  Age="${args.Age},  Gender="${args.Gender}, Status="${args.Status}, IsDeleted="${args.IsDeleted}" 
   WHERE Id="args.Id"`;
   return await query(q);
 });
 
-ipcMain.handle("update/member", async (event, args) => {
+ipcMain.handle("delete/member", async (event, args) => {
   console.log("DELETING...");
   const q = `DELETE FROM Members WHERE Id = ${args.Id}`;
   return await query(q);
@@ -124,7 +135,6 @@ app.setPath(
 // Prepare the renderer once the app is ready
 app.on("ready", async () => {
   await prepareNext("./renderer");
-  alert(app.getAppPath());
   createWindow();
 });
 
