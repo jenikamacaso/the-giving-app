@@ -1,6 +1,6 @@
 const { database } = require("../database");
 
-async function getQuery(query) {
+getQuery = async (query) => {
   return new Promise((resolve, reject) => {
     database.get(query, (err, val) => {
       if (err) {
@@ -9,19 +9,22 @@ async function getQuery(query) {
       resolve(val);
     });
   });
-}
+};
 
-async function getAllQuery(query) {
+
+query = async (query) => {
   return new Promise((resolve, reject) => {
-    database.all(query, (err, val) => {
+    console.log(query);
+    database.run(query, (err, val) => {
       if (err) {
         return reject(err);
       }
-      resolve(val);
+      resolve("Success");
     });
   });
-}
+};
+
 module.exports = {
   getQuery: getQuery,
-  getAllQuery: getAllQuery,
+  query: query,
 };

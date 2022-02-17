@@ -17,19 +17,16 @@ const MemberAdd = () => {
 
     const onSubmit = async (data) => {
 
-        console.log(startDate)
-
-        console.log(data)
         // Calls api
-        // const result = await window.api.createMember({
-        //     Name: data.name,
-        //     Email: 'test@gmail.com',
-        //     Address: 'Test Address',
-        //     Phone: '0394534534',
-        //     DateOfBirth: 'June 30, 1991',
-        //     IsActive: true,
-        //     IsDeleted: false,
-        // });
+        const result = await window.api.createMember({
+            Name: data.name,
+            Email: 'test@gmail.com',
+            Address: 'Test Address',
+            Phone: '0394534534',
+            DateOfBirth: 'June 30, 1991',
+            Status: 'Active',
+            IsDeleted: false,
+        });
     }
     return (
         <Wrapper title="Add Member">

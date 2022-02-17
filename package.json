@@ -56,6 +56,13 @@
         "to": ".assets/randomfile.png"
       },
       {
+        "from": "./main/index.js",
+        "to": "main/index.js",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
         "from": "./main/db/database.js",
         "to": "main/db/database.js",
         "filter": [
@@ -65,6 +72,13 @@
       {
         "from": "./main/db/queries/getQuery.js",
         "to": "main/db/queries/getQuery.js",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "./main/db/queries/postQuery.js",
+        "to": "main/db/queries/postQuery.js",
         "filter": [
           "**/*"
         ]

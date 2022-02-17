@@ -27,6 +27,7 @@ const Wrapper = (props) => {
         if (typeof window !== "undefined") {
             window.api.logout();
         }
+        Router.push('/account/login')
     }
 
     useEffect(() => {
