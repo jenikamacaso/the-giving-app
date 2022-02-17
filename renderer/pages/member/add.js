@@ -16,18 +16,20 @@ const MemberAdd = () => {
     const [startDate, setStartDate] = useState(new Date());
 
     const onSubmit = async (data) => {
-        // Calls api
-        const result = await window.api.createMember({
-            Name: data.name,
-            Email: 'test@gmail.com',
-            Address: 'Test Address',
-            Phone: '0394534534',
-            DateOfBirth: 'June 30, 1991',
-            IsActive: true,
-            IsDeleted: false,
-        });
 
-        console.log(result)
+        console.log(startDate)
+
+        console.log(data)
+        // Calls api
+        // const result = await window.api.createMember({
+        //     Name: data.name,
+        //     Email: 'test@gmail.com',
+        //     Address: 'Test Address',
+        //     Phone: '0394534534',
+        //     DateOfBirth: 'June 30, 1991',
+        //     IsActive: true,
+        //     IsDeleted: false,
+        // });
     }
     return (
         <Wrapper title="Add Member">
@@ -84,13 +86,16 @@ const MemberAdd = () => {
                         <Form.Group className="mb-3" controlId="formBasicBirthday">
                             <Form.Label>Birthday</Form.Label>
                             <Controller
-                                render={({ field }) => (
+                                rules={{ required: true }}
+                                name="birthday"
+                                control={control}
+                                render={({ field : { onChange, onBlur, value, ref } }) => (
                                     <DatePicker
                                         id="calendar"
                                         className="form-control w-100"
-                                        selected={startDate}
+                                        selected={value}
                                         maxDate={new Date()}
-                                        onChange={(date) => setStartDate(date)}
+                                        onChange={onChange}
                                         dateFormat='dd/MM/yyyy'
                                         showMonthDropdown
                                         showYearDropdown
@@ -98,11 +103,6 @@ const MemberAdd = () => {
                                         placeholderText="Birthday"
                                     />
                                 )}
-                                defaultValue=""
-                                rules={{ required: false }}
-                                name="birthday"
-                                control={control}
-                                valueName="selected"
                             />
                         </Form.Group>
 

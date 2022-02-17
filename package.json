@@ -14,13 +14,15 @@
     "react-bootstrap": "^2.1.1",
     "react-calendar": "^3.6.0",
     "react-datepicker": "^4.6.0",
+    "react-export-excel": "^0.5.3",
     "react-hook-form": "^7.24.2",
     "react-icons": "^4.3.1",
     "react-vis": "^1.11.7",
     "reset-scss": "^1.0.0",
     "sass": "^1.49.0",
     "sqlite3": "^5.0.2",
-    "wait-on": "^6.0.0"
+    "wait-on": "^6.0.0",
+    "xlsx": "^0.18.2"
   },
   "scripts": {
     "clean": "rimraf dist renderer/.next renderer/out",

@@ -7,3 +7,17 @@ module.exports = {
         includePaths: [path.join(__dirname, 'styles')],
     }
 };
+
+
+///webpack.config.js
+// vendor: [
+//         .....
+//         'xlsx',
+//         'file-saver'
+// ],
+// .....
+// node: {fs: 'empty'},
+// externals: [
+//     {'./cptable': 'var cptable'},
+//     {'./jszip': 'jszip'}
+//  ]

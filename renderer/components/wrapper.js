@@ -15,13 +15,18 @@ const Wrapper = (props) => {
     const [loadSplash, setLoadSplash] = useState(true);
     let isLoggedIn = false;
 
+
     const login = () => {
-        isLoggedIn = window.api.isLoggedIn();
+        if (typeof window !== "undefined") {
+            isLoggedIn = window.api.isLoggedIn();
+        }
     }
 
     const logout = () => {
         console.log('calling logout')
-        window.api.logout();
+        if (typeof window !== "undefined") {
+            window.api.logout();
+        }
     }
 
     useEffect(() => {
